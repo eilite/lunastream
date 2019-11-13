@@ -46,7 +46,7 @@ class AppComponents(context: ApplicationLoader.Context)
 
   lazy val masterActor = actorSystem.actorOf(Props(new MasterActor()), "main-actor")
 
-  lazy val lunafactoryStreamRunner = new lunastream.services.LunafactoryStreamRunner(
+  lazy val lunafactoryStreamRunner = new lunastream.services.LunastreamRunner(
     lunafactoryClient, productRepository, masterActor
   )
 
