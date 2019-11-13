@@ -29,7 +29,7 @@ class LunastreamRunner(
   )
 
   private val persistSink: Sink[(Int, Seq[Product]), NotUsed] = Flow.fromFunction[(Int, Seq[Product]), Seq[StoreProduct]] { 
-    case (store, products) => products.map( p => StoreProduct(store, LocalDateTime.now(), p))
+    case (store, products) => products.map(p => StoreProduct(store, p.copy(date = Some(LocalDateTime.now))))
   }.to(Sink.foreach(productRepository.persist))
 
   private def storeSource(store: Int) = lunafactoryClient.products(store).map(store -> _)

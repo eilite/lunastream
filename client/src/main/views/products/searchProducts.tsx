@@ -1,14 +1,13 @@
 import * as React from 'react'
 import {useContext, useEffect, useState} from 'react'
 
-const styles = require('./index.styl')
-
 import Search from 'antd/lib/input/Search'
-import { List, Card, Statistic } from 'antd'
+import { List } from 'antd'
 import { PagedProducts } from 'models/product'
 import { searchProducts } from 'services/apiClient'
 import AppContext from 'context'
 import { PaginationConfig } from 'antd/lib/table'
+import ProductCard from './productCard'
 
 const SearchProducts = () => {
   const appContext = useContext(AppContext)
@@ -61,12 +60,10 @@ const SearchProducts = () => {
     header={listHeader}
     grid={{ gutter: 16, column: 4 }}
     dataSource={pagedProducts.products}
+    style={{width: "100%"}}
     renderItem={product => (
       <List.Item>
-        <Card title={product.name} bordered>
-          <p>price: {product.price}</p>
-          <p>Description : { product.description}</p>
-        </Card>
+        <ProductCard product={product}/>
       </List.Item>
     )}
     pagination={paginationConfig}

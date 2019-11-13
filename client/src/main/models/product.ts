@@ -7,6 +7,7 @@ export interface Product {
   assembled: boolean
   weight: number
   dimension: Dimension
+  date?: Date
 }
 
 export interface PagedProducts {
@@ -16,7 +17,7 @@ export interface PagedProducts {
 }
 
 export interface TopProduct {
-  numberOfProducts: number
+  numberOfSells: number
   product: Product
 }
 

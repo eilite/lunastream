@@ -4,7 +4,8 @@ const { useContext, useEffect, useState } = React
 import { liveProducts } from 'services/apiClient'
 import AppContext from 'context'
 import { Product } from 'models/product'
-import { Card, List } from 'antd'
+import { List } from 'antd'
+import ProductCard from './productCard'
 
 const LiveProducts = () => {
   const appContext = useContext(AppContext)
@@ -43,10 +44,7 @@ const LiveProducts = () => {
     dataSource={products}
     renderItem={product =>
       <List.Item style={{display: 'flex', justifyContent: 'center'}}>
-        <Card title={product.name} bordered style={{width: '75%'}}>
-          <p>price: {product.price}</p>
-          <p>Description : { product.description}</p>
-        </Card>
+        <ProductCard product={product} width="75%"/>
       </List.Item>
     }
     style={{width: '75%'}}

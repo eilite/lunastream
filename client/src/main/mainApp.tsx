@@ -53,7 +53,8 @@ const App = () => {
   return <AppContext.Provider value={{
     state,
     setMode: mode => setState({...state, currentMode: mode}),
-    setStore: store => stores.map(s => s.store).includes(store) && setState({...state, currentStore: store})
+    setStore: store => stores.map(s => s.store).includes(store) && setState({...state, currentStore: store}),
+    setCurrentProduct: currentProduct => setState({...state, currentProduct})
   }}>
     <Header className={styles.title}>
       Lunastream

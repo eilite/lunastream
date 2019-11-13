@@ -4,7 +4,8 @@ import AppContext from 'context'
 
 import { TopProduct } from 'models/product'
 import { topProducts } from 'services/apiClient'
-import { List, Card } from 'antd'
+import { List } from 'antd'
+import ProductCard from './productCard'
 
 const TopProducts = () => {
   const appContext = useContext(AppContext)
@@ -26,11 +27,7 @@ const TopProducts = () => {
     dataSource={products}
     renderItem={top =>
       <List.Item style={{display: 'flex', justifyContent: 'center'}}>
-        <Card title={top.product.name} bordered style={{width: '75%'}}>
-          <p>price: {top.product.price}</p>
-          <p>Description : { top.product.description}</p>
-          <p>Number of products : { top.numberOfProducts }</p>
-        </Card>
+        <ProductCard product={top.product} width="75%" dateLabel="Last sale : "/>
       </List.Item>
     }
     style={{width: '75%'}}

@@ -1,5 +1,7 @@
 import { createContext } from 'react'
 
+import { Product } from 'models/product'
+
 export const routes = {
   home: '/',
   store: '/:store',
@@ -18,6 +20,7 @@ export type RouteProps = { store?: string, mode?: Mode }
 export interface AppState {
   currentStore: string
   currentMode: Mode
+  currentProduct?: Product
 }
 
 export const initState: AppState = {
@@ -28,7 +31,8 @@ export const initState: AppState = {
 const AppContext = createContext({
   state: initState,
   setMode: (_: Mode) => {},
-  setStore: (_: string) => {}
+  setStore: (_: string) => {},
+  setCurrentProduct: (_?: Product) => {}
 })
 
 export default AppContext

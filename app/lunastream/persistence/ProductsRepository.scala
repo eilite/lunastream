@@ -34,14 +34,18 @@ class ProductsRepository(
     val size = mSize.getOrElse(20)
     
     esClient.execute(
-      search("products").query(
+      search("products")
+      .query(
         must(
           Seq(
             store.map(s => termQuery("store", s)),
             query.map(q => simpleStringQuery(q))
           ).flatten
         )
-      ).start(from).limit(size)
+      )
+      .sortBy(FieldSort("product.date", order = Desc))
+      .start(from)
+      .limit(size)
     ).flatMap(processSearchProductsResponse(_, from))
   }
 
@@ -80,7 +84,7 @@ class ProductsRepository(
           subaggs = Seq(
             TopHitsAggregation(
               name = "top_products_hits",
-              sorts = Seq(FieldSort("date", order = Desc)),
+              sorts = Seq(FieldSort("product.date", order = Desc)),
               size = Some(1)
             )
           )

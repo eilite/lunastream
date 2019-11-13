@@ -1,7 +1,6 @@
 package lunastream.models
 
-import play.api.libs.json.{Json, Format}
-import play.api.libs.json.Writes
+import play.api.libs.json.{Json, Format, Writes}
 import java.time.LocalDateTime
 
 case class Product(
@@ -12,7 +11,8 @@ case class Product(
   price: Option[BigDecimal],
   assembled: Boolean,
   weight: Double,
-  dimension: Dimension
+  dimension: Dimension,
+  date: Option[LocalDateTime]
 )
 
 object Product {
@@ -21,7 +21,6 @@ object Product {
 
 case class StoreProduct(
   store: Int,
-  date: LocalDateTime,
   product: Product
 )
 
@@ -40,7 +39,7 @@ object PagedProducts {
 }
 
 case class TopProduct(
-  numberOfProducts: Long,
+  numberOfSells: Long,
   product: Product
 )
 
