@@ -39,3 +39,20 @@ sbt run
 ```
 
 You can run the app on `localhost:9000`
+
+### Technologies used 
+
+#### backend 
+- [sbt](https://www.scala-sbt.org/)
+- [play framework](https://www.playframework.com/)
+- [akka streams](https://doc.akka.io/docs/akka/current/stream/index.html)
+- [elasticsearch](https://www.elastic.co/products/elasticsearch)
+- [elastic4S](https://github.com/sksamuel/elastic4s)
+
+#### frontend
+- [reactjs](https://reactjs.org/)
+- [react-router](https://reacttraining.com/react-router/)
+- [typescript](https://www.typescriptlang.org/)
+- [antd](https://ant.design/)
+- [webpack](https://webpack.js.org/)
+- [stylus](http://stylus-lang.com/)
